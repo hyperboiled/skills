@@ -22,12 +22,15 @@ def executable(value):
 
 
 async def codex_catalog(binary, plugin, state):
+    home = state / "codex"
+    home.mkdir()
     server = await asyncio.create_subprocess_exec(
         binary, "app-server", "--listen", "stdio://",
         "-c", "analytics.enabled=false", "-c", "features.apps=false",
         "-c", "sqlite_home=" + json.dumps(str(state)),
         "-c", "log_dir=" + json.dumps(str(state)),
-        cwd=state, stdin=asyncio.subprocess.PIPE, stdout=asyncio.subprocess.PIPE,
+        cwd=state, env=dict(os.environ, CODEX_HOME=str(home)),
+        stdin=asyncio.subprocess.PIPE, stdout=asyncio.subprocess.PIPE,
     )
 
     async def request(message):
@@ -67,7 +70,7 @@ async def codex_catalog(binary, plugin, state):
             f"unexpected Codex components: skills={names}, "
             f"MCP servers={details['mcpServers']}, hooks={len(details['hooks'])}"
         )
-    print("Codex discovered all three skills and one MCP server.")
+    print(f"Codex discovered all {len(SKILLS)} skills and one MCP server.")
 
 
 def claude_catalog(binary, plugin, state):
@@ -87,11 +90,11 @@ def claude_catalog(binary, plugin, state):
     run(plugin, "plugin", "marketplace", "add", "./")
     run(plugin, "plugin", "install", f"{NAME}@{NAME}")
     details = run(state, "plugin", "details", f"{NAME}@{NAME}")
-    if "Skills (3)" not in details or any(name not in details for name in SKILLS):
-        raise ValueError("Claude did not discover all three Hyperboiled skills")
+    if f"Skills ({len(SKILLS)})" not in details or any(name not in details for name in SKILLS):
+        raise ValueError("Claude did not discover the expected Hyperboiled skills")
     if f"MCP servers (1)  {NAME}" not in details or "Hooks (0)" not in details:
         raise ValueError("unexpected Claude plugin server or hook count")
-    print("Claude installed the plugin and discovered all three skills and one MCP server.")
+    print(f"Claude installed the plugin and discovered all {len(SKILLS)} skills and one MCP server.")
 
 
 def main():

@@ -1,6 +1,6 @@
 # Hyperboiled Agent Skills
 
-Find servers, preview or register inventory, and manage SSH access. The plugin bundles three [Agent Skills](https://agentskills.io/specification) and a Hyperboiled MCP connection.
+Find and import servers, install Agent, troubleshoot SSH, and manage project access. The plugin bundles [Agent Skills](https://agentskills.io/specification) and a Hyperboiled MCP connection.
 
 ## Install the plugin
 
@@ -70,6 +70,12 @@ If a Hyperboiled connection already exists under that name, review its endpoint 
 | [Inventory](skills/hyperboiled-inventory/SKILL.md) | “Show the servers in Project Alpha and tell me when Agent last checked in on staging.” |
 | [Server import](skills/hyperboiled-server-import/SKILL.md) | “Preview the hosts in this Ansible inventory for Project Alpha → Staging.” |
 | [Managed SSH access](skills/hyperboiled-ssh-access/SKILL.md) | “Review the managed SSH grants on staging-api.” |
+| [Agent onboarding](skills/hyperboiled-agent-onboarding/SKILL.md) | “Resume Agent installation on the server I already added and tell me when it connects.” |
+| [SSH troubleshooting](skills/hyperboiled-ssh-troubleshooting/SKILL.md) | “I have a grant on staging-api. Why does my local SSH login fail?” |
+| [Project access](skills/hyperboiled-project-access/SKILL.md) | “Check that the project team can use dev and only the approved two people can use prod.” |
+| [Server hardening](skills/hyperboiled-server-hardening/SKILL.md) | “Enable key-only SSH and Fail2Ban on staging-api, then verify both.” |
+| [Agent maintenance](skills/hyperboiled-agent-maintenance/SKILL.md) | “Update Agent on the staging servers and show the release verified on each host.” |
+| [Member offboarding](skills/hyperboiled-member-offboarding/SKILL.md) | “Preview which roles and SSH grants would be affected if we disabled Riley.” |
 
 ## Validate
 

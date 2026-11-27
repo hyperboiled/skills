@@ -8,7 +8,17 @@ from zipfile import ZIP_STORED, ZipFile, ZipInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 NAME = "hyperboiled"
-SKILLS = ("hyperboiled-inventory", "hyperboiled-server-import", "hyperboiled-ssh-access")
+SKILLS = (
+    "hyperboiled-agent-maintenance",
+    "hyperboiled-agent-onboarding",
+    "hyperboiled-inventory",
+    "hyperboiled-member-offboarding",
+    "hyperboiled-project-access",
+    "hyperboiled-server-hardening",
+    "hyperboiled-server-import",
+    "hyperboiled-ssh-access",
+    "hyperboiled-ssh-troubleshooting",
+)
 GUIDE = "https://hyperboiled.com/get-started.md"
 MCP = "https://app.hyperboiled.com/api/v1/mcp"
 READ_SCOPES = ["inventory.read", "offline_access"]
