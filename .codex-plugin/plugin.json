@@ -1,0 +1,26 @@
+{
+  "name": "hyperboiled",
+  "version": "0.1.0",
+  "description": "Find servers, import inventory, and manage SSH access with Hyperboiled.",
+  "author": {
+    "name": "Hyperboiled",
+    "url": "https://hyperboiled.com"
+  },
+  "homepage": "https://hyperboiled.com",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Hyperboiled",
+    "shortDescription": "Server inventory and SSH access",
+    "developerName": "Hyperboiled",
+    "category": "Developer Tools",
+    "websiteURL": "https://hyperboiled.com",
+    "defaultPrompt": [
+      "List the servers I can see in my Hyperboiled project",
+      "Preview this Ansible inventory before importing it into Hyperboiled",
+      "Review the managed SSH grants on my staging server"
+    ],
+    "logo": "./assets/hyperboiled.svg",
+    "composerIcon": "./assets/hyperboiled.svg"
+  }
+}

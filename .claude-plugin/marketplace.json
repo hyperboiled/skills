@@ -1,0 +1,14 @@
+{
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
+  "name": "hyperboiled",
+  "owner": {
+    "name": "Hyperboiled"
+  },
+  "plugins": [
+    {
+      "name": "hyperboiled",
+      "source": "./"
+    }
+  ],
+  "description": "Hyperboiled Agent Skills and MCP."
+}

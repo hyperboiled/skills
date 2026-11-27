@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "hyperboiled": {
+      "type": "http",
+      "url": "https://app.hyperboiled.com/api/v1/mcp",
+      "scopes": ["inventory.read", "offline_access"],
+      "oauth": {
+        "scopes": "inventory.read offline_access"
+      }
+    }
+  }
+}

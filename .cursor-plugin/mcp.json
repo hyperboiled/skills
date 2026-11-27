@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "hyperboiled": {
+      "type": "http",
+      "url": "https://app.hyperboiled.com/api/v1/mcp"
+    }
+  }
+}

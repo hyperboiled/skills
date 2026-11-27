@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" role="img" aria-labelledby="favicon-title">
+  <title id="favicon-title">Hyperboiled</title>
+  <rect x="0.5" y="0.5" width="31" height="31" rx="7" fill="#132945" stroke="#39618A" />
+  <svg x="2.75" y="2.75" width="26.5" height="26.5" viewBox="285.5 108.5 672 672" aria-hidden="true">
+    <g fill="#F5F1E8">
+    <path d="M586 222H472C427 222 391 258 391 302V400Q391 414 406 414H459Q474 414 474 398V344C474 321 492 303 515 303H584Q597 303 597 290V236Q597 222 586 222Z" />
+    <path id="bottom-left" d="M406 470H459Q474 470 474 486V550C474 572 492 590 514 590H578Q592 590 592 604V653Q592 667 577 667H473C428 667 391 630 391 584V485Q391 470 406 470Z" />
+    <use href="#bottom-left" transform="translate(1243 0) scale(-1 1)" />
+    <path transform="translate(20 0)" d="M762 159Q756 157 752 170L738 207Q733 221 747 226L795 243C820 251 830 264 828 283L815 350Q812 366 826 370L873 383Q888 389 892 374L914 288C926 239 907 207 868 193L770 158Q766 157 762 159Z" />
+    <circle data-role="nucleus" cx="635" cy="441" r="99" />
+    <circle data-role="bubble" cx="767" cy="324" r="42" />
+  </g>
+  </svg>
+</svg>

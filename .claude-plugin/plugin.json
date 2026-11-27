@@ -1,0 +1,10 @@
+{
+  "name": "hyperboiled",
+  "version": "0.1.0",
+  "description": "Find servers, import inventory, and manage SSH access with Hyperboiled.",
+  "author": {
+    "name": "Hyperboiled"
+  },
+  "homepage": "https://hyperboiled.com",
+  "mcpServers": "./.mcp.json"
+}
