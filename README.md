@@ -16,10 +16,10 @@ codex plugin add hyperboiled@hyperboiled
 Start a new Codex session in your working project. The MCP server appears as `hyperboiled`. For the first CLI login, request inventory and session renewal explicitly.
 
 ```sh
-codex mcp login hyperboiled --scopes inventory.read,offline_access
+codex mcp login hyperboiled --no-browser --scopes inventory.read,offline_access
 ```
 
-In the desktop app, select **Authenticate** for the bundled Hyperboiled server and review the requested access in the browser. [Codex MCP documentation](https://developers.openai.com/codex/mcp)
+Open the printed URL in your usual browser profile. In the desktop app, select **Authenticate** for the bundled Hyperboiled server. [Codex MCP documentation](https://developers.openai.com/codex/mcp)
 
 ### Claude Code
 
@@ -28,7 +28,7 @@ claude plugin marketplace add hyperboiled/skills
 claude plugin install hyperboiled@hyperboiled
 ```
 
-Open Claude Code in your working project. In `/mcp`, select the server supplied by the Hyperboiled plugin and choose **Authenticate**, or run `claude mcp login plugin:hyperboiled:hyperboiled`. The bundled server requests inventory access and session renewal. [Claude Code marketplace](https://code.claude.com/docs/en/plugins/create-marketplace) · [Claude Code MCP](https://code.claude.com/docs/en/mcp#authenticate-with-remote-mcp-servers)
+Open Claude Code in your working project. Run `/reload-plugins` if the session is already open. In `/mcp`, select the bundled Hyperboiled server and choose **Authenticate**. The bundled server requests inventory access and session renewal. For terminal-only login, use the [standalone configuration](#verify-the-connection). [Claude Code marketplace](https://code.claude.com/docs/en/plugins/create-marketplace) · [Claude Code MCP](https://code.claude.com/docs/en/mcp#authenticate-with-remote-mcp-servers)
 
 ### GitHub Copilot in VS Code
 
@@ -51,14 +51,14 @@ The account holder completes browser consent on the intended Hyperboiled origin.
 For a task that needs writes, request only the required actions and review them in the browser. For example, registering server records requires `servers.create`.
 
 ```sh
-codex mcp login hyperboiled --scopes inventory.read,offline_access,servers.create
+codex mcp login hyperboiled --no-browser --scopes inventory.read,offline_access,servers.create
 ```
 
 For Claude Code, use the standalone skills and configure the intended connection with an explicit scope string. For the same registration task on production, configure and authenticate one entry in the working project.
 
 ```sh
 claude mcp add-json hyperboiled '{"type":"http","url":"https://app.hyperboiled.com/api/v1/mcp","oauth":{"scopes":"inventory.read offline_access servers.create"}}'
-claude mcp login hyperboiled
+claude mcp login hyperboiled --no-browser
 ```
 
 If a Hyperboiled connection already exists under that name, review its endpoint and grant before changing it. For Cursor, choose only the actions required when Hyperboiled offers them during consent. If the required scopes are unavailable, use an explicit-scope connection in Codex or Claude Code.
