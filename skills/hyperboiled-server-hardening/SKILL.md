@@ -1,11 +1,24 @@
 ---
 name: hyperboiled-server-hardening
-description: Use when someone asks to enable key-only SSH or Fail2Ban in Hyperboiled, verify a staged SSH policy, or recover a hardening operation that has not finished.
+description: Use when someone asks to enable key-only SSH or Fail2Ban in Hyperboiled, disable direct root SSH, verify a staged SSH policy, or recover a hardening operation that has not finished.
 ---
 
 # Hyperboiled server hardening
 
 Confirm the requested servers, whether the user wants key-only SSH, Fail2Ban, or both, and the intended trusted networks. Inspect the live tool catalog and verify the account, organization, project and scopes with `whoami`. Resolve exact servers and current Agent identities. Use the native operations advertised for that deployment. [Hyperboiled setup guide](https://hyperboiled.com/get-started.md)
+
+## Preserve operator access before SSH changes
+
+Record the current administrative SSH login, the Linux account and key that will remain usable, and the privileges needed for maintenance and recovery. Reuse working access for the named operator. Confirm a username such as `ubuntu` and its privileges on each host before planning around it.
+
+If the requested change removes the operator's current administrative login, including disabling direct root SSH:
+
+1. Verify a fresh external SSH login with the retained non-root account and approved key. If access needs provisioning, use an explicitly authorized SSH grant and wait for deployment before testing it.
+2. Verify that the retained account can run the required maintenance and recovery commands with passwordless sudo. Test a harmless permitted command in the fresh SSH session with `sudo -k -n` to ignore cached credentials and reject password prompts. Match the tested command to the approved policy. If sudo is missing, arrange the minimum approved `NOPASSWD` policy through an existing authorized administrative path, then repeat the checks.
+3. Keep the current administrative session available. Before staging, confirm a recovery path independent of the SSH route being changed, such as a provider console, and verify the timed rollback for this specific change. Treat any unverified login, required privilege, or recovery path as a blocker for that host.
+4. After staging, verify the intended effective SSH policy for the applicable connection contexts, including root when disabling direct root SSH. Repeat the retained account's SSH login and sudo check from a new session before accepting the change. Roll back via the confirmed path if verification fails or cannot finish in time. Revoke any approved temporary bootstrap grant only after the durable operator path has passed both checks.
+
+Hyperboiled key-only SSH currently uses `PermitRootLogin prohibit-password`, which allows root keys. Handle `PermitRootLogin no` as a separate, explicitly authorized change. Check whether the live catalog supports it and report any unsupported step before staging.
 
 ## Enable key-only SSH
 
